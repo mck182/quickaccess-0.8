@@ -1,0 +1,93 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'quickaccess.h'
+**
+** Created: Tue Apr 7 14:55:35 2009
+**      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../quickaccess.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'quickaccess.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 61
+#error "This file was generated using the moc from 4.5.0. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_QuickAccess[] = {
+
+ // content:
+       2,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       8,   12, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+
+ // slots: signature, parameters, type, tag, flags
+      13,   12,   12,   12, 0x0a,
+      51,   12,   12,   12, 0x0a,
+      72,   12,   12,   12, 0x0a,
+      88,   12,   12,   12, 0x08,
+     107,   12,   12,   12, 0x08,
+     123,   12,   12,   12, 0x08,
+     148,  140,   12,   12, 0x08,
+     173,   12,   12,   12, 0x08,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_QuickAccess[] = {
+    "QuickAccess\0\0applySettings(Settings::SettingsType)\0"
+    "toolTipAboutToShow()\0toolTipHidden()\0"
+    "slot_iconClicked()\0slotDragEvent()\0"
+    "configAccepted()\0checked\0"
+    "showPreviewToggled(bool)\0saveSettings()\0"
+};
+
+const QMetaObject QuickAccess::staticMetaObject = {
+    { &Plasma::Applet::staticMetaObject, qt_meta_stringdata_QuickAccess,
+      qt_meta_data_QuickAccess, 0 }
+};
+
+const QMetaObject *QuickAccess::metaObject() const
+{
+    return &staticMetaObject;
+}
+
+void *QuickAccess::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_QuickAccess))
+        return static_cast<void*>(const_cast< QuickAccess*>(this));
+    typedef Plasma::Applet QMocSuperClass;
+    return QMocSuperClass::qt_metacast(_clname);
+}
+
+int QuickAccess::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    typedef Plasma::Applet QMocSuperClass;
+    _id = QMocSuperClass::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: applySettings((*reinterpret_cast< Settings::SettingsType(*)>(_a[1]))); break;
+        case 1: toolTipAboutToShow(); break;
+        case 2: toolTipHidden(); break;
+        case 3: slot_iconClicked(); break;
+        case 4: slotDragEvent(); break;
+        case 5: configAccepted(); break;
+        case 6: showPreviewToggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: saveSettings(); break;
+        default: ;
+        }
+        _id -= 8;
+    }
+    return _id;
+}
+QT_END_MOC_NAMESPACE

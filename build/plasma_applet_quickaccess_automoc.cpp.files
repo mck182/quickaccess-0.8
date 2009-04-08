@@ -1,0 +1,14 @@
+SOURCES:
+/home/mck182/Installs/quickaccess/quickaccess.cpp;/home/mck182/Installs/quickaccess/popupdialog.cpp;/home/mck182/Installs/quickaccess/itemview.cpp;/home/mck182/Installs/quickaccess/pluginwidget.cpp;/home/mck182/Installs/quickaccess/effects.cpp;/home/mck182/Installs/quickaccess/button.cpp;/home/mck182/Installs/quickaccess/dirmodel.cpp;/home/mck182/Installs/quickaccess/label.cpp;/home/mck182/Installs/quickaccess/iconmanager.cpp;/home/mck182/Installs/quickaccess/resizedialog.cpp;/home/mck182/Installs/quickaccess/settings.cpp;/home/mck182/Installs/quickaccess/pluginmodel.cpp
+MOC_COMPILE_DEFINITIONS:
+_BSD_SOURCE;_XOPEN_SOURCE=500;_BSD_SOURCE;QT_NO_STL;QT_NO_CAST_TO_ASCII;_REENTRANT;KDE_DEPRECATED_WARNINGS
+MOC_DEFINITIONS:
+ -D_BSD_SOURCE -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DQT_NO_STL -DQT_NO_CAST_TO_ASCII -D_REENTRANT -DKDE_DEPRECATED_WARNINGS
+MOC_INCLUDES:
+/home/mck182/Installs/quickaccess;/home/mck182/Installs/quickaccess/build;/usr/include/kde4;/usr/include/kde4/KDE;/usr/include/KDE;/usr/include;/usr/include/phonon;/usr/include/QtXmlPatterns;/usr/include/QtWebKit;/usr/include/QtHelp;/usr/include/QtAssistant;/usr/include/QtDBus;/usr/include/QtTest;/usr/include/QtUiTools;/usr/include/QtScript;/usr/include/QtSvg;/usr/include/QtXml;/usr/include/QtSql;/usr/include/QtOpenGL;/usr/include/QtNetwork;/usr/include/QtDesigner;/usr/include/Qt3Support;/usr/include/QtGui;/usr/include/QtCore;/usr/include/Qt;/usr/lib64/qt4/mkspecs/default
+CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE:
+ON
+CMAKE_BINARY_DIR:
+/home/mck182/Installs/quickaccess/build
+CMAKE_SOURCE_DIR:
+/home/mck182/Installs/quickaccess

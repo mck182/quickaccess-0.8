@@ -1,0 +1,103 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'itemview.h'
+**
+** Created: Tue Apr 7 14:55:35 2009
+**      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../itemview.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'itemview.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 61
+#error "This file was generated using the moc from 4.5.0. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_ItemView[] = {
+
+ // content:
+       2,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       9,   12, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+
+ // signals: signature, parameters, type, tag, flags
+      10,    9,    9,    9, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      41,   35,    9,    9, 0x0a,
+      59,    9,    9,    9, 0x2a,
+      66,    9,    9,    9, 0x0a,
+      89,    9,    9,    9, 0x0a,
+     108,    9,    9,    9, 0x0a,
+     137,    9,    9,    9, 0x08,
+     155,  149,    9,    9, 0x08,
+     191,  182,    9,    9, 0x08,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_ItemView[] = {
+    "ItemView\0\0signal_open(QModelIndex)\0"
+    "index\0open(QModelIndex)\0open()\0"
+    "updateAnimation(qreal)\0timeLineFinished()\0"
+    "updateScrollAnimation(qreal)\0dragEnter()\0"
+    "value\0scrollBarValueChanged(int)\0"
+    "category\0wheelScrollLinesChanged(int)\0"
+};
+
+const QMetaObject ItemView::staticMetaObject = {
+    { &QAbstractItemView::staticMetaObject, qt_meta_stringdata_ItemView,
+      qt_meta_data_ItemView, 0 }
+};
+
+const QMetaObject *ItemView::metaObject() const
+{
+    return &staticMetaObject;
+}
+
+void *ItemView::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_ItemView))
+        return static_cast<void*>(const_cast< ItemView*>(this));
+    return QAbstractItemView::qt_metacast(_clname);
+}
+
+int ItemView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QAbstractItemView::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: signal_open((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 1: open((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 2: open(); break;
+        case 3: updateAnimation((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 4: timeLineFinished(); break;
+        case 5: updateScrollAnimation((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 6: dragEnter(); break;
+        case 7: scrollBarValueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: wheelScrollLinesChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        default: ;
+        }
+        _id -= 9;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void ItemView::signal_open(const QModelIndex & _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+QT_END_MOC_NAMESPACE

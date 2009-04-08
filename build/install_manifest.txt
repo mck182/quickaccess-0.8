@@ -1,0 +1,2 @@
+/usr/lib64/kde4/plasma_applet_quickaccess.so
+/usr/share/kde4/services/plasma-applet-quickaccess.desktop

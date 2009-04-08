@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+005c489bdfe05e71efcdc8977d0e8406 CMakeFiles/plasma_applet_quickaccess_automoc
+430e7d90ef81d7836aafed8d36b49e05 CMakeFiles/uninstall
+b539e3cc8a417bd0dbdba5212be40500 ui_pluginwidgetbase.h
+fdc1b0f91101f01a8fd241a93fc1a0bd ui_quickaccessConfig.h
