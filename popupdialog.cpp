@@ -338,27 +338,10 @@ void PopupDialog::slot_open(const QModelIndex &index)
 }
 
 void PopupDialog::checkDolphinSorting(const KUrl *dir) {
-
-  int sortingType = 0;
-  int sortOrder = 0;
-
-  QFile f(QString(dir->path(KUrl::AddTrailingSlash)+".directory"));
-  if(f.exists()) {
-    if(f.open(QIODevice::ReadOnly)) {
-      while(!f.atEnd()) {
-	QByteArray fLine = f.readLine();
-	if(fLine.contains("Sorting")) {
-	    QString fSortingLine(fLine);
-	    sortingType = fSortingLine.split("=").at(1).toInt();
-	}
-	if(fLine.contains("SortOrder")) {
-	    QString fSortOrderLine(fLine);
-	    sortOrder = fSortOrderLine.split("=").at(1).toInt();
-	}
-      }
-      f.close();
-    }
-  }
+  KConfig conf(dir->path(KUrl::AddTrailingSlash)+".directory");
+  KConfigGroup cg(&conf, "Dolphin");
+  int sortingType = cg.readEntry("Sorting", 0);
+  int sortOrder = cg.readEntry("SortOrder", 0);
 
   if(sortingType == 0) {
     m_settings->setSortColumn(KDirModel::Name);
