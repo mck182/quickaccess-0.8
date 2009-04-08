@@ -1,0 +1,297 @@
+=== modified file 'dirmodel.cpp'
+--- dirmodel.cpp	2009-04-06 21:19:52 +0000
++++ dirmodel.cpp	2009-04-08 19:32:34 +0000
+@@ -23,7 +23,8 @@
+ 
+ //locale includes
+ #include "dirmodel.h"
+-
++#include <QtDebug>
++#include <kdirlister.h>
+ 
+ DirModel::DirModel(QObject * parent )
+   :KDirModel( parent )
+@@ -48,5 +49,14 @@
+   }
+   return item.text();
+ }
++// KDirLister* DirModel::dirLister() {
++//  KDirLister *kkl = KDirModel::dirLister();
++//   KUrl *kkk = kkl->url();
++//   //KUrl *kkk = KDirModel::dirLister()->url();
++//   qDebug() << kkl->url().path(KUrl::AddTrailingSlash);
++//   delete kkl;
++//   delete kkk;
++//   return KDirModel::dirLister();
++// }
+ 
+ #include "dirmodel.moc"
+
+=== modified file 'dirmodel.h'
+--- dirmodel.h	2009-04-06 21:19:52 +0000
++++ dirmodel.h	2009-04-08 20:28:58 +0000
+@@ -31,7 +31,7 @@
+   public:
+     DirModel (QObject * parent = 0 );
+     virtual QVariant data( const QModelIndex & index, int role = Qt::DisplayRole ) const;
+-  
++    //KDirLister * dirLister();
+ 
+     bool m_showOnlyIcons;
+   private:
+
+=== modified file 'popupdialog.cpp'
+--- popupdialog.cpp	2009-04-07 12:45:58 +0000
++++ popupdialog.cpp	2009-04-08 23:26:31 +0000
+@@ -215,6 +215,9 @@
+     case Settings::SingleClickNav:
+       toggleSingleClick();
+       break;
++    case Settings::DolphinSorting:
++      
++      break;
+     case Settings::All:
+       m_view->setIconSize(QSize(m_settings->iconSize(), m_settings->iconSize()));
+       m_iconManager->setShowPreview(m_settings->showPreviews());
+@@ -257,7 +260,9 @@
+ 
+ void PopupDialog::setStartUrl(const KUrl &url)
+ {
+-  if( !m_model->dirLister()->openUrl( url ) )
++  if(m_settings->enableDolphinSorting())
++    checkDolphinSorting(&url);
++  if( !m_model->dirLister()->openUrl( url, KDirLister::Keep ) )
+     kDebug() << "can not open url: " << url;
+   connect(m_model->dirLister(), SIGNAL(completed()), this, SLOT(dirListerCompleted()));
+ }
+@@ -315,9 +320,15 @@
+   if(index.isValid()) {
+     m_backButton->show();
+     m_current = m_model->itemForIndex(m_proxyModel->mapToSource(index));
++
++    if(m_settings->enableDolphinSorting())
++      checkDolphinSorting(&(m_current.url()));
++
+   } else {
+     m_backButton->hide();
+     m_current = m_start;
++    if(m_settings->enableDolphinSorting())
++      checkDolphinSorting(&(m_current.url()));    
+   }
+   if(m_current.isFile() || !m_settings->allowNavigation()) {
+     m_current.run();
+@@ -326,4 +337,27 @@
+   m_label->setFileItem(m_current);
+ }
+ 
++void PopupDialog::checkDolphinSorting(const KUrl *dir) {
++  KConfig conf(dir->path(KUrl::AddTrailingSlash)+".directory");
++  KConfigGroup cg(&conf, "Dolphin");
++  int sortingType = cg.readEntry("Sorting", 0);
++  int sortOrder = cg.readEntry("SortOrder", 0);
++
++  if(sortingType == 0) {
++    m_settings->setSortColumn(KDirModel::Name);
++  } else if(sortingType == 1) {
++    m_settings->setSortColumn(KDirModel::Size);
++  } else if(sortingType == 2) {
++    m_settings->setSortColumn(KDirModel::ModifiedTime);
++  }
++    else m_settings->setSortColumn(KDirModel::Name);	//fallback for other dolphin's sorting types (like by permissions and so..)
++
++  if(sortOrder == 1) {
++    m_settings->setSortOrder(Qt::DescendingOrder);
++  } else {
++    m_settings->setSortOrder(Qt::AscendingOrder);
++  }
++}
++
++
+ #include "popupdialog.moc"
+
+=== modified file 'popupdialog.h'
+--- popupdialog.h	2009-04-07 12:45:58 +0000
++++ popupdialog.h	2009-04-08 21:18:07 +0000
+@@ -58,6 +58,8 @@
+     KFileItem startItem()
+       { return m_start; }
+       
++    void checkDolphinSorting(const KUrl *dir);
++
+   signals:
+     void signal_hide();
+   
+
+=== modified file 'quickaccess.cpp'
+--- quickaccess.cpp	2009-04-07 12:45:58 +0000
++++ quickaccess.cpp	2009-04-08 21:24:21 +0000
+@@ -243,6 +243,7 @@
+   m_settings->setShowCustomLabel(ui.customLabelBox->isChecked());
+   m_settings->setCustomLabel(ui.customLabelEdit->text());
+   m_settings->setShowToolTips(ui.tooltipBox->isChecked());
++  m_settings->setEnableDolphinSorting(ui.dolphinSortingBox->isChecked());
+   
+   QStringList list = pluginWidget->activePlugins();
+   qSort(list); //sort it...
+
+=== modified file 'quickaccessConfig.ui'
+--- quickaccessConfig.ui	2009-04-07 12:45:58 +0000
++++ quickaccessConfig.ui	2009-04-08 21:24:00 +0000
+@@ -7,7 +7,7 @@
+     <x>0</x>
+     <y>0</y>
+     <width>414</width>
+-    <height>233</height>
++    <height>236</height>
+    </rect>
+   </property>
+   <property name="windowTitle">
+@@ -124,7 +124,7 @@
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+-          <width>24</width>
++          <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+@@ -146,6 +146,36 @@
+      </layout>
+     </item>
+     <item>
++     <layout class="QHBoxLayout" name="horizontalLayout_2">
++      <item>
++       <spacer name="horizontalSpacer_3">
++        <property name="orientation">
++         <enum>Qt::Horizontal</enum>
++        </property>
++        <property name="sizeType">
++         <enum>QSizePolicy::Fixed</enum>
++        </property>
++        <property name="sizeHint" stdset="0">
++         <size>
++          <width>40</width>
++          <height>20</height>
++         </size>
++        </property>
++       </spacer>
++      </item>
++      <item>
++       <widget class="QCheckBox" name="dolphinSortingBox">
++        <property name="enabled">
++         <bool>false</bool>
++        </property>
++        <property name="text">
++         <string>Use Dolphin's directory sorting setting</string>
++        </property>
++       </widget>
++      </item>
++     </layout>
++    </item>
++    <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+@@ -486,5 +516,21 @@
+     </hint>
+    </hints>
+   </connection>
++  <connection>
++   <sender>navigationBox</sender>
++   <signal>toggled(bool)</signal>
++   <receiver>dolphinSortingBox</receiver>
++   <slot>setEnabled(bool)</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>49</x>
++     <y>148</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>138</x>
++     <y>212</y>
++    </hint>
++   </hints>
++  </connection>
+  </connections>
+ </ui>
+
+=== modified file 'settings.cpp'
+--- settings.cpp	2009-04-07 12:45:58 +0000
++++ settings.cpp	2009-04-08 21:27:27 +0000
+@@ -41,6 +41,7 @@
+   ,m_viewMode(ItemView::ListMode)
+   ,m_allowNavigation(true)
+   ,m_singleClickNavigation(true)
++  ,m_enableDolphinSorting(false)
+   ,m_sortOrder(Qt::AscendingOrder)
+   ,m_sortColumn(KDirModel::Name)
+ {
+@@ -247,6 +248,19 @@
+   return m_singleClickNavigation;
+ }
+ 
++void Settings::setEnableDolphinSorting(bool allow) {
++  if(allow != m_enableDolphinSorting) {
++    m_enableDolphinSorting = allow;
++    m_needsSaving = true;
++    emit settingsChanged(Settings::DolphinSorting);
++  }
++}
++
++bool Settings::enableDolphinSorting() {
++  return m_enableDolphinSorting;
++}
++
++
+ void Settings::setSortOrder(Qt::SortOrder order)
+ {
+   if(order != m_sortOrder) {
+@@ -299,6 +313,7 @@
+   m_sortOrder = (Qt::SortOrder)cg->readEntry("sortOrder", 0);
+   m_sortColumn = (KDirModel::ModelColumns)cg->readEntry("sortColumn", 0);
+   m_singleClickNavigation = cg->readEntry("SingleClickNavigation", true);
++  m_enableDolphinSorting = cg->readEntry("EnableDolphinSorting", false);
+   //emit settingsChanged(Settings::All);
+ }
+ 
+@@ -320,6 +335,7 @@
+   cg->writeEntry("sortOrder", (int)m_sortOrder);
+   cg->writeEntry("sortColumn", (int)m_sortColumn);
+   cg->writeEntry("SingleClickNavigation", m_singleClickNavigation);
++  cg->writeEntry("EnableDolphinSorting", m_enableDolphinSorting);
+   m_needsSaving = false;
+ }
+   
+
+=== modified file 'settings.h'
+--- settings.h	2009-04-07 12:45:58 +0000
++++ settings.h	2009-04-08 21:09:54 +0000
+@@ -46,7 +46,8 @@
+       ViewMode = 9,
+       Sorting = 10,
+       All = 11,
+-      SingleClickNav = 12
++      SingleClickNav = 12,
++      DolphinSorting = 13
+     };
+     
+     Settings(QObject *parent = 0);
+@@ -93,6 +94,9 @@
+     
+     void setSingleClickNavigation(bool allow);
+     bool singleClickNavigation();
++
++    void setEnableDolphinSorting(bool allow);
++    bool enableDolphinSorting();
+     
+     void setSortOrder(Qt::SortOrder order);
+     Qt::SortOrder sortOrder();
+@@ -126,6 +130,7 @@
+     ItemView::ViewMode m_viewMode;
+     bool m_allowNavigation;
+     bool m_singleClickNavigation;
++    bool m_enableDolphinSorting;
+     Qt::SortOrder m_sortOrder;
+     KDirModel::ModelColumns m_sortColumn;
+   
+
