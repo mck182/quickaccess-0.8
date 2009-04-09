@@ -31,7 +31,6 @@ class DirModel : public KDirModel
   public:
     DirModel (QObject * parent = 0 );
     virtual QVariant data( const QModelIndex & index, int role = Qt::DisplayRole ) const;
-    //KDirLister * dirLister();
 
     bool m_showOnlyIcons;
   private:
