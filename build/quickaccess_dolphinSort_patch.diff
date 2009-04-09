@@ -42,8 +42,24 @@
 
 === modified file 'popupdialog.cpp'
 --- popupdialog.cpp	2009-04-07 12:45:58 +0000
-+++ popupdialog.cpp	2009-04-08 23:26:31 +0000
-@@ -215,6 +215,9 @@
++++ popupdialog.cpp	2009-04-09 07:21:00 +0000
+@@ -114,14 +114,7 @@
+   
+   //create the ItemView
+   m_view = new ItemView(this);
+-  m_view->setFocus();
+-  
+-  if(m_settings->singleClickNavigation()) {
+-    connect(m_view, SIGNAL(clicked(const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
+-  } else {
+-    connect(m_view, SIGNAL(doubleClicked (const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
+-  }
+-  
++  m_view->setFocus();  
+   
+   m_model = new DirModel(this);
+   m_proxyModel = new KDirSortFilterProxyModel(this);
+@@ -215,6 +208,9 @@
      case Settings::SingleClickNav:
        toggleSingleClick();
        break;
@@ -53,7 +69,20 @@
      case Settings::All:
        m_view->setIconSize(QSize(m_settings->iconSize(), m_settings->iconSize()));
        m_iconManager->setShowPreview(m_settings->showPreviews());
-@@ -257,7 +260,9 @@
+@@ -236,10 +232,12 @@
+ void PopupDialog::toggleSingleClick() {
+       if(m_settings->singleClickNavigation()) {
+ 	    m_view->disconnect(SIGNAL(doubleClicked(const QModelIndex &)));
++// 	    disconnect(m_view, SIGNAL(doubleClicked (const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));	    
+ 	    connect(m_view, SIGNAL(clicked(const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
+       }
+       else {
+ 	    m_view->disconnect(SIGNAL(clicked(const QModelIndex &)));
++// 	    disconnect(m_view, SIGNAL(clicked(const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
+ 	    connect(m_view, SIGNAL(doubleClicked (const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));	    
+       }
+ }
+@@ -257,7 +255,9 @@
  
  void PopupDialog::setStartUrl(const KUrl &url)
  {
@@ -64,23 +93,18 @@
      kDebug() << "can not open url: " << url;
    connect(m_model->dirLister(), SIGNAL(completed()), this, SLOT(dirListerCompleted()));
  }
-@@ -315,9 +320,15 @@
-   if(index.isValid()) {
-     m_backButton->show();
-     m_current = m_model->itemForIndex(m_proxyModel->mapToSource(index));
+@@ -319,6 +319,10 @@
+     m_backButton->hide();
+     m_current = m_start;
+   }
 +
 +    if(m_settings->enableDolphinSorting())
 +      checkDolphinSorting(&(m_current.url()));
 +
-   } else {
-     m_backButton->hide();
-     m_current = m_start;
-+    if(m_settings->enableDolphinSorting())
-+      checkDolphinSorting(&(m_current.url()));    
-   }
    if(m_current.isFile() || !m_settings->allowNavigation()) {
      m_current.run();
-@@ -326,4 +337,27 @@
+     hide();
+@@ -326,4 +330,27 @@
    m_label->setFileItem(m_current);
  }
  
