@@ -231,13 +231,11 @@ void PopupDialog::applySettings(Settings::SettingsType type)
 
 void PopupDialog::toggleSingleClick() {
       if(m_settings->singleClickNavigation()) {
-	    m_view->disconnect(SIGNAL(doubleClicked(const QModelIndex &)));
-// 	    disconnect(m_view, SIGNAL(doubleClicked (const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));	    
+	    m_view->disconnect(SIGNAL(doubleClicked(const QModelIndex &)));  
 	    connect(m_view, SIGNAL(clicked(const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
       }
       else {
 	    m_view->disconnect(SIGNAL(clicked(const QModelIndex &)));
-// 	    disconnect(m_view, SIGNAL(clicked(const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
 	    connect(m_view, SIGNAL(doubleClicked (const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));	    
       }
 }
@@ -257,7 +255,7 @@ void PopupDialog::setStartUrl(const KUrl &url)
 {
   if(m_settings->enableDolphinSorting())
     checkDolphinSorting(&url);
-  if( !m_model->dirLister()->openUrl( url, KDirLister::Keep ) )
+  if( !m_model->dirLister()->openUrl( url) )
     kDebug() << "can not open url: " << url;
   connect(m_model->dirLister(), SIGNAL(completed()), this, SLOT(dirListerCompleted()));
 }

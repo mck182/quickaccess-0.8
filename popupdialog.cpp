@@ -255,7 +255,7 @@ void PopupDialog::setStartUrl(const KUrl &url)
 {
   if(m_settings->enableDolphinSorting())
     checkDolphinSorting(&url);
-  if( !m_model->dirLister()->openUrl( url, KDirLister::Keep ) )
+  if( !m_model->dirLister()->openUrl( url ) )
     kDebug() << "can not open url: " << url;
   connect(m_model->dirLister(), SIGNAL(completed()), this, SLOT(dirListerCompleted()));
 }

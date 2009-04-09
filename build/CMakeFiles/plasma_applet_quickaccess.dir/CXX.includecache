@@ -149,10 +149,6 @@ KDesktopFile
 -
 dirmodel.h
 /home/mck182/Installs/quickaccess/dirmodel.h
-QtDebug
--
-kdirlister.h
--
 dirmodel.moc
 /home/mck182/Installs/quickaccess/dirmodel.moc
 
@@ -853,10 +849,6 @@ qvector.h
 /usr/include/QtCore/qvector.h
 qxmlstream.h
 /usr/include/QtCore/qxmlstream.h
-
-/usr/include/QtCore/QtDebug
-qdebug.h
-/usr/include/QtCore/qdebug.h
 
 /usr/include/QtCore/QtGlobal
 qglobal.h

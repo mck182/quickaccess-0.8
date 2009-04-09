@@ -49,14 +49,5 @@ QVariant DirModel::data( const QModelIndex & index, int role  ) const
   }
   return item.text();
 }
-KDirLister* DirModel::dirLister() {
-//  KDirLister *kkl = KDirModel::dirLister();
-//   KUrl *kkk = kkl->url();
-//   //KUrl *kkk = KDirModel::dirLister()->url();
-//   qDebug() << kkl->url().path(KUrl::AddTrailingSlash);
-//   delete kkl;
-//   delete kkk;
-  return KDirModel::dirLister();
-}
 
 #include "dirmodel.moc"

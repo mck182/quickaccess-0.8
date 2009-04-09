@@ -136,7 +136,6 @@ CMakeFiles/plasma_applet_quickaccess.dir/dirmodel.o
  /usr/include/QtCore/QDateTime
  /usr/include/QtCore/QExplicitlySharedDataPointer
  /usr/include/QtCore/QHash
- /usr/include/QtCore/QIODevice
  /usr/include/QtCore/QList
  /usr/include/QtCore/QMap
  /usr/include/QtCore/QObject
@@ -149,12 +148,7 @@ CMakeFiles/plasma_applet_quickaccess.dir/dirmodel.o
  /usr/include/QtCore/QStringList
  /usr/include/QtCore/QUrl
  /usr/include/QtCore/QVariant
- /usr/include/QtCore/QVector
- /usr/include/QtCore/QtCore
- /usr/include/QtCore/QtDebug
  /usr/include/QtCore/QtGlobal
- /usr/include/QtCore/qabstracteventdispatcher.h
- /usr/include/QtCore/qabstractfileengine.h
  /usr/include/QtCore/qabstractitemmodel.h
  /usr/include/QtCore/qalgorithms.h
  /usr/include/QtCore/qatomic.h
@@ -177,134 +171,38 @@ CMakeFiles/plasma_applet_quickaccess.dir/dirmodel.o
  /usr/include/QtCore/qatomic_sparc.h
  /usr/include/QtCore/qatomic_x86_64.h
  /usr/include/QtCore/qbasicatomic.h
- /usr/include/QtCore/qbasictimer.h
- /usr/include/QtCore/qbitarray.h
- /usr/include/QtCore/qbuffer.h
  /usr/include/QtCore/qbytearray.h
- /usr/include/QtCore/qbytearraymatcher.h
- /usr/include/QtCore/qcache.h
  /usr/include/QtCore/qchar.h
  /usr/include/QtCore/qconfig-x86_64.h
  /usr/include/QtCore/qconfig.h
- /usr/include/QtCore/qcontainerfwd.h
- /usr/include/QtCore/qcoreapplication.h
  /usr/include/QtCore/qcoreevent.h
- /usr/include/QtCore/qcryptographichash.h
  /usr/include/QtCore/qdatastream.h
  /usr/include/QtCore/qdatetime.h
- /usr/include/QtCore/qdebug.h
- /usr/include/QtCore/qdir.h
- /usr/include/QtCore/qdiriterator.h
- /usr/include/QtCore/qendian.h
- /usr/include/QtCore/qeventloop.h
- /usr/include/QtCore/qfactoryinterface.h
  /usr/include/QtCore/qfeatures.h
- /usr/include/QtCore/qfile.h
- /usr/include/QtCore/qfileinfo.h
- /usr/include/QtCore/qfilesystemwatcher.h
- /usr/include/QtCore/qfsfileengine.h
- /usr/include/QtCore/qfuture.h
- /usr/include/QtCore/qfutureinterface.h
- /usr/include/QtCore/qfuturesynchronizer.h
- /usr/include/QtCore/qfuturewatcher.h
  /usr/include/QtCore/qglobal.h
  /usr/include/QtCore/qhash.h
  /usr/include/QtCore/qiodevice.h
  /usr/include/QtCore/qiterator.h
- /usr/include/QtCore/qlibrary.h
- /usr/include/QtCore/qlibraryinfo.h
  /usr/include/QtCore/qline.h
  /usr/include/QtCore/qlinkedlist.h
  /usr/include/QtCore/qlist.h
- /usr/include/QtCore/qlocale.h
  /usr/include/QtCore/qmap.h
- /usr/include/QtCore/qmath.h
- /usr/include/QtCore/qmetaobject.h
  /usr/include/QtCore/qmetatype.h
- /usr/include/QtCore/qmimedata.h
- /usr/include/QtCore/qmutex.h
  /usr/include/QtCore/qnamespace.h
- /usr/include/QtCore/qnumeric.h
  /usr/include/QtCore/qobject.h
- /usr/include/QtCore/qobjectcleanuphandler.h
  /usr/include/QtCore/qobjectdefs.h
  /usr/include/QtCore/qpair.h
- /usr/include/QtCore/qplugin.h
- /usr/include/QtCore/qpluginloader.h
  /usr/include/QtCore/qpoint.h
- /usr/include/QtCore/qpointer.h
- /usr/include/QtCore/qprocess.h
- /usr/include/QtCore/qqueue.h
- /usr/include/QtCore/qreadwritelock.h
  /usr/include/QtCore/qrect.h
  /usr/include/QtCore/qregexp.h
- /usr/include/QtCore/qresource.h
- /usr/include/QtCore/qrunnable.h
- /usr/include/QtCore/qsemaphore.h
- /usr/include/QtCore/qset.h
- /usr/include/QtCore/qsettings.h
  /usr/include/QtCore/qshareddata.h
- /usr/include/QtCore/qsharedmemory.h
- /usr/include/QtCore/qsharedpointer.h
- /usr/include/QtCore/qsharedpointer_impl.h
- /usr/include/QtCore/qsignalmapper.h
  /usr/include/QtCore/qsize.h
- /usr/include/QtCore/qsocketnotifier.h
- /usr/include/QtCore/qstack.h
  /usr/include/QtCore/qstring.h
  /usr/include/QtCore/qstringlist.h
  /usr/include/QtCore/qstringmatcher.h
- /usr/include/QtCore/qsystemsemaphore.h
- /usr/include/QtCore/qtconcurrentcompilertest.h
- /usr/include/QtCore/qtconcurrentexception.h
- /usr/include/QtCore/qtconcurrentfilter.h
- /usr/include/QtCore/qtconcurrentfilterkernel.h
- /usr/include/QtCore/qtconcurrentfunctionwrappers.h
- /usr/include/QtCore/qtconcurrentiteratekernel.h
- /usr/include/QtCore/qtconcurrentmap.h
- /usr/include/QtCore/qtconcurrentmapkernel.h
- /usr/include/QtCore/qtconcurrentmedian.h
- /usr/include/QtCore/qtconcurrentreducekernel.h
- /usr/include/QtCore/qtconcurrentresultstore.h
- /usr/include/QtCore/qtconcurrentrun.h
- /usr/include/QtCore/qtconcurrentrunbase.h
- /usr/include/QtCore/qtconcurrentstoredfunctioncall.h
- /usr/include/QtCore/qtconcurrentthreadengine.h
- /usr/include/QtCore/qtemporaryfile.h
- /usr/include/QtCore/qtextboundaryfinder.h
- /usr/include/QtCore/qtextcodec.h
- /usr/include/QtCore/qtextcodecplugin.h
- /usr/include/QtCore/qtextstream.h
- /usr/include/QtCore/qthread.h
- /usr/include/QtCore/qthreadpool.h
- /usr/include/QtCore/qthreadstorage.h
- /usr/include/QtCore/qtimeline.h
- /usr/include/QtCore/qtimer.h
- /usr/include/QtCore/qtranslator.h
  /usr/include/QtCore/qurl.h
- /usr/include/QtCore/quuid.h
  /usr/include/QtCore/qvariant.h
- /usr/include/QtCore/qvarlengtharray.h
  /usr/include/QtCore/qvector.h
- /usr/include/QtCore/qwaitcondition.h
- /usr/include/QtCore/qxmlstream.h
- /usr/include/QtDBus/QtDBus
- /usr/include/QtDBus/qdbusabstractadaptor.h
- /usr/include/QtDBus/qdbusabstractinterface.h
- /usr/include/QtDBus/qdbusargument.h
- /usr/include/QtDBus/qdbusconnection.h
- /usr/include/QtDBus/qdbusconnectioninterface.h
- /usr/include/QtDBus/qdbuscontext.h
- /usr/include/QtDBus/qdbuserror.h
- /usr/include/QtDBus/qdbusextratypes.h
- /usr/include/QtDBus/qdbusinterface.h
- /usr/include/QtDBus/qdbusmacros.h
- /usr/include/QtDBus/qdbusmessage.h
- /usr/include/QtDBus/qdbusmetatype.h
- /usr/include/QtDBus/qdbuspendingcall.h
- /usr/include/QtDBus/qdbuspendingreply.h
- /usr/include/QtDBus/qdbusreply.h
- /usr/include/QtDBus/qdbusserver.h
  /usr/include/QtGui/QPixmap
  /usr/include/QtGui/qcolor.h
  /usr/include/QtGui/qimage.h
@@ -318,64 +216,26 @@ CMakeFiles/plasma_applet_quickaccess.dir/dirmodel.o
  /usr/include/QtGui/qtransform.h
  /usr/include/QtGui/qwindowdefs.h
  /usr/include/QtGui/qwmatrix.h
- /usr/include/QtXml/QtXml
- /usr/include/QtXml/qdom.h
- /usr/include/QtXml/qxml.h
- /usr/include/_G_config.h
  /usr/include/alloca.h
  /usr/include/bits/byteswap.h
  /usr/include/bits/endian.h
- /usr/include/bits/huge_val.h
- /usr/include/bits/huge_valf.h
- /usr/include/bits/huge_vall.h
- /usr/include/bits/inf.h
- /usr/include/bits/libc-lock.h
- /usr/include/bits/libio-ldbl.h
- /usr/include/bits/local_lim.h
- /usr/include/bits/mathcalls.h
- /usr/include/bits/mathdef.h
- /usr/include/bits/mathinline.h
- /usr/include/bits/nan.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/pthreadtypes.h
- /usr/include/bits/sched.h
  /usr/include/bits/select.h
- /usr/include/bits/setjmp.h
- /usr/include/bits/sigaction.h
- /usr/include/bits/sigcontext.h
- /usr/include/bits/siginfo.h
- /usr/include/bits/signum.h
  /usr/include/bits/sigset.h
- /usr/include/bits/sigstack.h
- /usr/include/bits/sigthread.h
  /usr/include/bits/stat.h
- /usr/include/bits/stdio-ldbl.h
- /usr/include/bits/stdio-lock.h
- /usr/include/bits/stdio.h
- /usr/include/bits/stdio2.h
- /usr/include/bits/stdio_lim.h
  /usr/include/bits/stdlib-ldbl.h
  /usr/include/bits/stdlib.h
  /usr/include/bits/string.h
  /usr/include/bits/string2.h
  /usr/include/bits/string3.h
- /usr/include/bits/sys_errlist.h
  /usr/include/bits/time.h
  /usr/include/bits/types.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
- /usr/include/bits/wchar-ldbl.h
- /usr/include/bits/wchar.h
- /usr/include/bits/wchar2.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
- /usr/include/ctype.h
  /usr/include/endian.h
  /usr/include/features.h
- /usr/include/gconv.h
- /usr/include/getopt.h
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/kde4/KDE/../kdesktopfile.h
@@ -389,8 +249,6 @@ CMakeFiles/plasma_applet_quickaccess.dir/dirmodel.o
  /usr/include/kde4/kdecore_export.h
  /usr/include/kde4/kdemacros.h
  /usr/include/kde4/kdeui_export.h
- /usr/include/kde4/kdirlister.h
- /usr/include/kde4/kdirnotify.h
  /usr/include/kde4/kfileitem.h
  /usr/include/kde4/kfilemetainfo.h
  /usr/include/kde4/kfilemetainfoitem.h
@@ -408,14 +266,6 @@ CMakeFiles/plasma_applet_quickaccess.dir/dirmodel.o
  /usr/include/kde4/ktimezone.h
  /usr/include/kde4/kurl.h
  /usr/include/kde4/predicateproperties.h
- /usr/include/libio.h
- /usr/include/limits.h
- /usr/include/linux/limits.h
- /usr/include/math.h
- /usr/include/pthread.h
- /usr/include/sched.h
- /usr/include/signal.h
- /usr/include/stdio.h
  /usr/include/stdlib.h
  /usr/include/string.h
  /usr/include/sys/cdefs.h
@@ -424,10 +274,7 @@ CMakeFiles/plasma_applet_quickaccess.dir/dirmodel.o
  /usr/include/sys/sysmacros.h
  /usr/include/sys/time.h
  /usr/include/sys/types.h
- /usr/include/sys/ucontext.h
  /usr/include/time.h
- /usr/include/wchar.h
- /usr/include/wctype.h
  /usr/include/xlocale.h
  dirmodel.moc
 CMakeFiles/plasma_applet_quickaccess.dir/effects.o

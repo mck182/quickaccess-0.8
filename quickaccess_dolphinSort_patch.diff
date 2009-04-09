@@ -24,7 +24,7 @@
 
 === modified file 'popupdialog.cpp'
 --- popupdialog.cpp	2009-04-07 12:45:58 +0000
-+++ popupdialog.cpp	2009-04-09 07:25:32 +0000
++++ popupdialog.cpp	2009-04-09 07:35:07 +0000
 @@ -114,14 +114,7 @@
    
    //create the ItemView
@@ -60,17 +60,15 @@
  	    connect(m_view, SIGNAL(clicked(const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
        }
        else {
-@@ -257,7 +253,9 @@
+@@ -257,6 +253,8 @@
  
  void PopupDialog::setStartUrl(const KUrl &url)
  {
--  if( !m_model->dirLister()->openUrl( url ) )
 +  if(m_settings->enableDolphinSorting())
 +    checkDolphinSorting(&url);
-+  if( !m_model->dirLister()->openUrl( url, KDirLister::Keep ) )
+   if( !m_model->dirLister()->openUrl( url ) )
      kDebug() << "can not open url: " << url;
    connect(m_model->dirLister(), SIGNAL(completed()), this, SLOT(dirListerCompleted()));
- }
 @@ -319,6 +317,10 @@
      m_backButton->hide();
      m_current = m_start;
