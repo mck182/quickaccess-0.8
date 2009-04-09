@@ -23,8 +23,6 @@
 
 //locale includes
 #include "dirmodel.h"
-#include <QtDebug>
-#include <kdirlister.h>
 
 DirModel::DirModel(QObject * parent )
   :KDirModel( parent )
