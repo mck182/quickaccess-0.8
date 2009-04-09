@@ -114,14 +114,7 @@ PopupDialog::PopupDialog(Settings *settings, QWidget * parent, Qt::WindowFlags f
   
   //create the ItemView
   m_view = new ItemView(this);
-  m_view->setFocus();
-  
-  if(m_settings->singleClickNavigation()) {
-    connect(m_view, SIGNAL(clicked(const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
-  } else {
-    connect(m_view, SIGNAL(doubleClicked (const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
-  }
-  
+  m_view->setFocus();  
   
   m_model = new DirModel(this);
   m_proxyModel = new KDirSortFilterProxyModel(this);
@@ -238,7 +231,7 @@ void PopupDialog::applySettings(Settings::SettingsType type)
 
 void PopupDialog::toggleSingleClick() {
       if(m_settings->singleClickNavigation()) {
-	    m_view->disconnect(SIGNAL(doubleClicked(const QModelIndex &)));
+	    m_view->disconnect(SIGNAL(doubleClicked(const QModelIndex &)));  
 	    connect(m_view, SIGNAL(clicked(const QModelIndex &)), m_view, SLOT(open(const QModelIndex &)));
       }
       else {
@@ -320,16 +313,14 @@ void PopupDialog::slot_open(const QModelIndex &index)
   if(index.isValid()) {
     m_backButton->show();
     m_current = m_model->itemForIndex(m_proxyModel->mapToSource(index));
+  } else {
+    m_backButton->hide();
+    m_current = m_start;
+  }
 
     if(m_settings->enableDolphinSorting())
       checkDolphinSorting(&(m_current.url()));
 
-  } else {
-    m_backButton->hide();
-    m_current = m_start;
-    if(m_settings->enableDolphinSorting())
-      checkDolphinSorting(&(m_current.url()));    
-  }
   if(m_current.isFile() || !m_settings->allowNavigation()) {
     m_current.run();
     hide();
